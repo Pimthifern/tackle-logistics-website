@@ -2,7 +2,7 @@ import { routing } from "@/i18n/routing";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { Sora, DM_Sans } from "next/font/google";
-import "../../globals.css";
+import "../globals.css";
 
 const sora = Sora({
   variable: "--font-sora",

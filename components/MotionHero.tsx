@@ -34,7 +34,10 @@ export default function MotionHero() {
             className="object-cover object-right"
             priority
             sizes="100vw"
-            quality={90}
+            quality={85}
+            onError={(e) => {
+              console.error("Image load error:", e);
+            }}
           />
         </motion.div>
       </AnimatePresence>
