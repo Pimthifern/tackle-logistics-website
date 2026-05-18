@@ -28,14 +28,14 @@ const item = {
 
 export default function WhyChooseSection() {
   return (
-    <section className="bg-page-bg py-[86px] px-[48px]">
+    <section className="bg-page-bg py-16 sm:py-20 px-4 sm:px-8 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           <p className="text-corp-blue font-display font-black tracking-widest uppercase text-xs mb-4">
             WHY TACKLE
           </p>
-          <h2 className="font-display font-black tracking-tight" style={{ fontSize: "clamp(36px, 5vw, 72px)" }}>
+          <h2 className="font-display font-black tracking-tight" style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
             Built for cargo that matters.
           </h2>
         </div>
@@ -46,7 +46,7 @@ export default function WhyChooseSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 md:gap-x-16 gap-y-8 sm:gap-y-12"
         >
           {points.map((point, index) => (
             <motion.div

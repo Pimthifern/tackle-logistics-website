@@ -18,20 +18,20 @@ const countries = [
 
 export default function CoverageSection() {
   return (
-    <section className="bg-navy py-[86px] px-[48px] text-white">
+    <section className="bg-navy py-16 sm:py-20 px-4 sm:px-8 md:px-12 text-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-12 sm:mb-16">
           <p className="font-display font-black tracking-widest uppercase text-xs text-white/50 mb-4">
             COVERAGE
           </p>
-          <h2 className="font-display font-black tracking-tight" style={{ fontSize: "clamp(36px, 5vw, 72px)" }}>
+          <h2 className="font-display font-black tracking-tight" style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
             Hubs & Cross-Border Routes.
           </h2>
         </div>
 
         {/* 2-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
           {/* Hub Locations */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}

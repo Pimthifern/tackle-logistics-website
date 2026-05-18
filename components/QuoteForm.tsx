@@ -36,12 +36,12 @@ export default function QuoteForm() {
 
   if (isSubmitted) {
     return (
-      <section className="bg-page-bg py-[86px] px-[48px]">
+      <section className="bg-page-bg py-16 sm:py-20 px-4 sm:px-8 md:px-12">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-[40px] shadow-[0_16px_45px_rgba(15,45,80,0.06)] p-[48px] text-center"
+            className="bg-white rounded-2xl sm:rounded-[32px] md:rounded-[40px] shadow-[0_16px_45px_rgba(15,45,80,0.06)] p-6 sm:p-8 md:p-12 text-center"
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -74,17 +74,17 @@ export default function QuoteForm() {
   }
 
   return (
-    <section className="bg-page-bg py-[86px] px-[48px]">
+    <section className="bg-page-bg py-16 sm:py-20 px-4 sm:px-8 md:px-12">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           <p className="text-corp-blue font-display font-black tracking-widest uppercase text-xs mb-4">
             GET A QUOTE
           </p>
-          <h2 className="font-display font-black tracking-tight mb-4" style={{ fontSize: "clamp(36px, 5vw, 72px)" }}>
+          <h2 className="font-display font-black tracking-tight mb-4" style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
             Request a freight quote.
           </h2>
-          <p className="text-muted text-lg">
+          <p className="text-muted text-base sm:text-lg">
             We'll get back to you within one business day.
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function QuoteForm() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-white rounded-[40px] shadow-[0_16px_45px_rgba(15,45,80,0.06)] p-[48px]"
+          className="bg-white rounded-2xl sm:rounded-[32px] md:rounded-[40px] shadow-[0_16px_45px_rgba(15,45,80,0.06)] p-6 sm:p-8 md:p-12"
         >
           {/* 2-Column Grid for Short Fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

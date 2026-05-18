@@ -13,14 +13,14 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="bg-white py-[86px] px-[48px]">
+    <section className="bg-white py-16 sm:py-20 px-4 sm:px-8 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-12 sm:mb-16">
           <p className="text-corp-blue font-display font-black tracking-widest uppercase text-xs mb-4">
             HOW IT WORKS
           </p>
-          <h2 className="font-display font-black tracking-tight" style={{ fontSize: "clamp(36px, 5vw, 72px)" }}>
+          <h2 className="font-display font-black tracking-tight" style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
             Simple process. Reliable results.
           </h2>
         </div>

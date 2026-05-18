@@ -52,17 +52,17 @@ const item = {
 
 export default function ServicesSection() {
   return (
-    <section className="bg-white py-[86px] px-[48px]">
+    <section className="bg-white py-16 sm:py-20 px-4 sm:px-8 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           <p className="text-corp-blue font-display font-black tracking-widest uppercase text-xs mb-4">
             OUR SERVICES
           </p>
-          <h2 className="font-display font-black tracking-tight mb-4" style={{ fontSize: "clamp(36px, 5vw, 72px)" }}>
+          <h2 className="font-display font-black tracking-tight mb-4" style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
             Everything your cargo needs.
           </h2>
-          <p className="text-muted text-lg">
+          <p className="text-muted text-base sm:text-lg">
             Six core services. One reliable partner.
           </p>
         </div>
@@ -73,13 +73,13 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px]"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={item}
-              className="bg-white border border-sky rounded-[32px] p-[30px] shadow-[0_16px_45px_rgba(15,45,80,0.06)]"
+              className="bg-white border border-sky rounded-2xl sm:rounded-[32px] p-5 sm:p-6 md:p-[30px] shadow-[0_16px_45px_rgba(15,45,80,0.06)]"
             >
               <div className="text-3xl mb-4">{service.icon}</div>
               <h3 className="font-display font-bold text-2xl tracking-tight mb-3">

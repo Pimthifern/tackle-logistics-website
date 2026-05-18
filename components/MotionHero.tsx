@@ -38,7 +38,7 @@ export default function MotionHero() {
   const current = heroModes[activeMode];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#0f172a]">
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#0f172a]">
 
       {/* LAYER 1 — Full bleed background image */}
       <AnimatePresence mode="wait">
@@ -62,13 +62,13 @@ export default function MotionHero() {
       <div
         className="absolute inset-0 z-[1]"
         style={{
-          background: "linear-gradient(to top, rgba(6,47,102,0.75) 0%, rgba(6,47,102,0.25) 45%, transparent 70%)"
+          background: "linear-gradient(to top, rgba(6,47,102,0.85) 0%, rgba(6,47,102,0.35) 45%, transparent 70%)"
         }}
       />
 
       {/* LAYER 3 — Dot grid */}
       <div
-        className="absolute inset-0 z-[2] opacity-20"
+        className="absolute inset-0 z-[2] opacity-20 pointer-events-none"
         style={{
           backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px)",
           backgroundSize: "28px 28px"
@@ -77,7 +77,7 @@ export default function MotionHero() {
 
       {/* LAYER 4 — Route SVG */}
       <svg
-        className="absolute inset-0 w-full h-full z-[3]"
+        className="absolute inset-0 w-full h-full z-[3] pointer-events-none"
         viewBox="0 0 1700 900"
         preserveAspectRatio="none"
       >
@@ -97,23 +97,23 @@ export default function MotionHero() {
       </svg>
 
       {/* LAYER 5 — Topbar */}
-      <div className="absolute top-0 left-0 right-0 z-[10] px-12 py-7 flex justify-between items-center">
-        <div className="font-display font-black text-3xl tracking-widest text-white">
+      <div className="absolute top-0 left-0 right-0 z-[10] px-4 sm:px-8 md:px-12 py-5 sm:py-6 md:py-7 flex justify-between items-center">
+        <div className="font-display font-black text-2xl sm:text-3xl tracking-widest text-white">
           TACKLE
         </div>
-        <button className="px-6 py-3 rounded-full border border-white/40 text-white font-black text-sm tracking-wider backdrop-blur-[20px] bg-white/10 hover:bg-white/20 transition-all hover:-translate-y-0.5">
+        <button className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/40 text-white font-black text-xs sm:text-sm tracking-wider backdrop-blur-[20px] bg-white/10 hover:bg-white/20 transition-all hover:-translate-y-0.5">
           Request Quote →
         </button>
       </div>
 
       {/* LAYER 6 — Mode Tabs */}
-      <div className="absolute top-[88px] left-12 z-[10]">
+      <div className="absolute top-[70px] sm:top-[80px] md:top-[88px] left-4 sm:left-8 md:left-12 z-[10]">
         <div className="inline-flex p-1.5 rounded-full border border-white/30 backdrop-blur-[22px] bg-white/10 gap-1">
           {(["air", "sea", "land"] as const).map((mode) => (
             <button
               key={mode}
               onClick={() => setActiveMode(mode)}
-              className="relative px-5 py-2.5 rounded-full font-display font-black tracking-wider text-sm transition-colors duration-200"
+              className="relative px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full font-display font-black tracking-wider text-xs sm:text-sm transition-colors duration-200"
             >
               {activeMode === mode && (
                 <motion.div
@@ -133,7 +133,7 @@ export default function MotionHero() {
       </div>
 
       {/* LAYER 7 — Copy block (bottom left) */}
-      <div className="absolute bottom-16 left-12 right-12 z-[10] max-w-[640px]">
+      <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-[10] max-w-full sm:max-w-[640px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeMode}
@@ -141,11 +141,11 @@ export default function MotionHero() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-5"
+            className="space-y-4 sm:space-y-5"
           >
             {/* Eyebrow */}
-            <div className="inline-flex px-4 py-2 rounded-full border border-white/40 backdrop-blur-[16px] bg-white/10">
-              <span className="font-display font-black tracking-widest text-xs uppercase text-white">
+            <div className="inline-flex px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/40 backdrop-blur-[16px] bg-white/10">
+              <span className="font-display font-black tracking-widest text-[10px] sm:text-xs uppercase text-white">
                 {current.eyebrow}
               </span>
             </div>
@@ -154,7 +154,7 @@ export default function MotionHero() {
             <h1
               className="font-display font-black text-white leading-[0.95] tracking-tight"
               style={{
-                fontSize: "clamp(40px, 6vw, 88px)",
+                fontSize: "clamp(32px, 5vw, 64px)",
                 whiteSpace: "pre-line"
               }}
             >
@@ -162,16 +162,16 @@ export default function MotionHero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-white/80 text-lg font-medium leading-relaxed max-w-[520px]">
+            <p className="text-white/80 text-base sm:text-lg font-medium leading-relaxed max-w-full sm:max-w-[520px]">
               {current.subtitle}
             </p>
 
             {/* Cue */}
-            <div className="flex items-center gap-3 flex-wrap">
-              <div className="w-10 h-10 flex-shrink-0 rounded-full border border-white/40 backdrop-blur-[16px] bg-white/10 flex items-center justify-center">
-                <span className="text-white text-base">{current.icon}</span>
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 rounded-full border border-white/40 backdrop-blur-[16px] bg-white/10 flex items-center justify-center">
+                <span className="text-white text-sm sm:text-base">{current.icon}</span>
               </div>
-              <p className="text-white/70 font-display font-black tracking-widest uppercase text-xs">
+              <p className="text-white/70 font-display font-black tracking-widest uppercase text-[10px] sm:text-xs">
                 {current.cue}
               </p>
             </div>
