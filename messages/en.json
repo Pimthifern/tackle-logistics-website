@@ -1,0 +1,218 @@
+{
+  "hero": {
+    "modes": {
+      "air": {
+        "eyebrow": "AIR FREIGHT",
+        "title": "Critical cargo.\nAirborne with confidence.",
+        "subtitle": "Fast import/export solutions with temperature-controlled handling and end-to-end care.",
+        "cue": "AIR FREIGHT • IMPORT / EXPORT • DGR • MEDICAL CARGO • TEMPERATURE CONTROLLED"
+      },
+      "sea": {
+        "eyebrow": "SEA FREIGHT",
+        "title": "Volume cargo.\nAcross oceans with confidence.",
+        "subtitle": "FCL and LCL import-export solutions with reliable ocean freight and end-to-end care.",
+        "cue": "SEA FREIGHT • FCL / LCL • IMPORT / EXPORT • MACHINERY CARGO • BULK CARGO"
+      },
+      "land": {
+        "eyebrow": "LAND TRANSPORT",
+        "title": "Domestic cargo.\nOn the road with confidence.",
+        "subtitle": "24/7 domestic transportation with strategic hubs and end-to-end delivery care.",
+        "cue": "LAND TRANSPORT • DOMESTIC 24/7 • 4W / 6W / 10W • HAULAGE • HIAB TRUCK"
+      }
+    },
+    "requestQuote": "Request Quote →",
+    "brand": "TACKLE"
+  },
+  "services": {
+    "label": "OUR SERVICES",
+    "title": "Everything your cargo needs.",
+    "subtitle": "Six core services. One reliable partner.",
+    "items": [
+      {
+        "title": "Air Freight",
+        "description": "Urgent, sensitive, DGR, medical and temperature-controlled cargo."
+      },
+      {
+        "title": "Sea Freight",
+        "description": "FCL/LCL ocean freight for import, export, machinery and bulk cargo."
+      },
+      {
+        "title": "Cross Border",
+        "description": "Door-to-door routes across Malaysia, Singapore, Vietnam, Laos and Cambodia."
+      },
+      {
+        "title": "Customs Broker",
+        "description": "Clearance and document support for import and export operations."
+      },
+      {
+        "title": "Land Transport",
+        "description": "Domestic transportation 24/7 with strategic hubs and multiple truck types."
+      },
+      {
+        "title": "Packing & Repacking",
+        "description": "UN Box, IPPC wooden crate, lashing, chocking and dry ice support."
+      }
+    ]
+  },
+  "whyChoose": {
+    "label": "WHY TACKLE",
+    "title": "Built for cargo that matters.",
+    "items": [
+      {
+        "title": "10+ Years Experience",
+        "description": "A seasoned team with deep expertise in international and domestic logistics."
+      },
+      {
+        "title": "End-to-End Service",
+        "description": "From pickup to final delivery — we manage every step of the journey."
+      },
+      {
+        "title": "Special Cargo Handling",
+        "description": "DGR, temperature-controlled, oversized, and high-value cargo handled with precision."
+      },
+      {
+        "title": "24/7 Domestic Transport",
+        "description": "Round-the-clock truck operations with strategic hub coverage nationwide."
+      },
+      {
+        "title": "Cross-Border Routes",
+        "description": "Established lanes into Malaysia, Singapore, Vietnam, Laos, and Cambodia."
+      },
+      {
+        "title": "Premium Customer Care",
+        "description": "Dedicated support and transparent communication throughout every shipment."
+      }
+    ]
+  },
+  "coverage": {
+    "label": "COVERAGE",
+    "title": "Hubs & Cross-Border Routes.",
+    "hubs": {
+      "title": "Hub Locations",
+      "items": [
+        "Suvarnabhumi Airport",
+        "Bangkok Sea Port",
+        "Bangpoo Industrial Estate"
+      ]
+    },
+    "countries": {
+      "title": "Cross-Border Routes",
+      "items": [
+        "Malaysia",
+        "Singapore",
+        "Vietnam",
+        "Laos",
+        "Cambodia"
+      ]
+    }
+  },
+  "process": {
+    "label": "HOW IT WORKS",
+    "title": "Simple process. Reliable results.",
+    "steps": [
+      {
+        "title": "Inquiry",
+        "description": "Tell us your cargo details and requirements."
+      },
+      {
+        "title": "Cargo Review",
+        "description": "We assess your shipment and recommend the best solution."
+      },
+      {
+        "title": "Quotation",
+        "description": "Receive a clear, transparent quote with no hidden fees."
+      },
+      {
+        "title": "Booking",
+        "description": "Confirm and we handle all arrangements end-to-end."
+      },
+      {
+        "title": "Transport",
+        "description": "Your cargo moves — tracked and cared for throughout."
+      },
+      {
+        "title": "Delivery Confirmation",
+        "description": "Final delivery with documentation and confirmation."
+      }
+    ]
+  },
+  "quoteForm": {
+    "label": "GET A QUOTE",
+    "title": "Request a freight quote.",
+    "subtitle": "We'll get back to you within one business day.",
+    "success": {
+      "title": "Thank you!",
+      "message": "We'll be in touch within one business day."
+    },
+    "fields": {
+      "companyName": {
+        "label": "Company Name",
+        "placeholder": "Your company name",
+        "required": "This field is required."
+      },
+      "contactPerson": {
+        "label": "Contact Person",
+        "placeholder": "Your name",
+        "required": "This field is required."
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "080-826-4865",
+        "required": "This field is required."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com",
+        "required": "This field is required.",
+        "invalid": "Invalid email address."
+      },
+      "serviceType": {
+        "label": "Service Type",
+        "placeholder": "Select a service",
+        "required": "This field is required.",
+        "options": [
+          "Air Freight",
+          "Sea Freight",
+          "Cross Border",
+          "Customs Broker",
+          "Land Transport",
+          "Packing & Repacking"
+        ]
+      },
+      "origin": {
+        "label": "Origin",
+        "placeholder": "Bangkok, Thailand",
+        "required": "This field is required."
+      },
+      "destination": {
+        "label": "Destination",
+        "placeholder": "Singapore",
+        "required": "This field is required."
+      },
+      "cargoDetail": {
+        "label": "Cargo Type / Detail",
+        "placeholder": "Describe your cargo (weight, dimensions, special handling requirements...)",
+        "required": "This field is required."
+      },
+      "specialRequirement": {
+        "label": "Special Requirement",
+        "placeholder": "Any special requirements or notes (optional)"
+      }
+    },
+    "submit": "Submit Quote Request"
+  },
+  "footer": {
+    "tagline": "Premium Logistics Partner",
+    "copyright": "© 2025 TACKLE Logistics Co., Ltd.",
+    "contact": {
+      "phone": "080-826-4865",
+      "email": "Chartsiam@tacklelog.com",
+      "address": "883/318 Moo2, Banklangsuan, Prasamutchedi, Samutprakarn 10290"
+    }
+  },
+  "language": {
+    "switch": "ภาษา",
+    "en": "English",
+    "th": "ไทย"
+  }
+}

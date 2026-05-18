@@ -2,40 +2,16 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const heroModes = {
-  air: {
-    eyebrow: "AIR FREIGHT",
-    title: "Critical cargo.\nAirborne with confidence.",
-    subtitle: "Fast import/export solutions with temperature-controlled handling and end-to-end care.",
-    cue: "AIR FREIGHT • IMPORT / EXPORT • DGR • MEDICAL CARGO • TEMPERATURE CONTROLLED",
-    icon: "❄",
-    image: "/images/air-hero.png",
-    route: "M 80 560 C 360 360, 780 470, 1130 250 S 1450 120, 1660 260"
-  },
-  sea: {
-    eyebrow: "SEA FREIGHT",
-    title: "Volume cargo.\nAcross oceans with confidence.",
-    subtitle: "FCL and LCL import-export solutions with reliable ocean freight and end-to-end care.",
-    cue: "SEA FREIGHT • FCL / LCL • IMPORT / EXPORT • MACHINERY CARGO • BULK CARGO",
-    icon: "⚓",
-    image: "/images/sea-hero.png",
-    route: "M 40 590 C 340 590, 520 500, 760 535 S 1190 650, 1640 420"
-  },
-  land: {
-    eyebrow: "LAND TRANSPORT",
-    title: "Domestic cargo.\nOn the road with confidence.",
-    subtitle: "24/7 domestic transportation with strategic hubs and end-to-end delivery care.",
-    cue: "LAND TRANSPORT • DOMESTIC 24/7 • 4W / 6W / 10W • HAULAGE • HIAB TRUCK",
-    icon: "⌁",
-    image: "/images/land-hero.png",
-    route: "M 30 650 C 320 520, 630 610, 875 470 S 1290 260, 1650 350"
-  }
-};
+import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export default function MotionHero() {
-  const [activeMode, setActiveMode] = useState<keyof typeof heroModes>("air");
-  const current = heroModes[activeMode];
+  const t = useTranslations("hero");
+  const locale = useLocale();
+  const [activeMode, setActiveMode] = useState<keyof typeof t.raw>("modes")>("air");
+
+  const modes = t.raw("modes") as any;
+  const current = modes[activeMode];
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-[#0f172a]">
@@ -50,7 +26,7 @@ export default function MotionHero() {
           transition={{ duration: 0.9, ease: "easeInOut" }}
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `url(${current.image})`,
+            backgroundImage: `url(/images/${activeMode}-hero.png)`,
             backgroundSize: "cover",
             backgroundPosition: "center right",
             backgroundRepeat: "no-repeat"
@@ -99,11 +75,23 @@ export default function MotionHero() {
       {/* LAYER 5 — Topbar */}
       <div className="absolute top-0 left-0 right-0 z-[10] px-4 sm:px-8 md:px-12 py-5 sm:py-6 md:py-7 flex justify-between items-center">
         <div className="font-display font-black text-2xl sm:text-3xl tracking-widest text-white">
-          TACKLE
+          {t("brand")}
         </div>
-        <button className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/40 text-white font-black text-xs sm:text-sm tracking-wider backdrop-blur-[20px] bg-white/10 hover:bg-white/20 transition-all hover:-translate-y-0.5">
-          Request Quote →
-        </button>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            locale={locale === "en" ? "th" : "en"}
+            className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full border border-white/40 text-white font-black text-xs sm:text-sm tracking-wider backdrop-blur-[20px] bg-white/10 hover:bg-white/20 transition-all hover:-translate-y-0.5"
+          >
+            {locale === "en" ? "🇹🇭 ไทย" : "🇺🇸 EN"}
+          </Link>
+          <Link
+            href="#quote"
+            className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/40 text-white font-black text-xs sm:text-sm tracking-wider backdrop-blur-[20px] bg-white/10 hover:bg-white/20 transition-all hover:-translate-y-0.5"
+          >
+            {t("requestQuote")}
+          </Link>
+        </div>
       </div>
 
       {/* LAYER 6 — Mode Tabs */}
@@ -123,9 +111,9 @@ export default function MotionHero() {
                 />
               )}
               <span className={`relative z-10 ${activeMode === mode ? "text-navy" : "text-white"}`}>
-                {mode === "air" && "✈ AIR"}
-                {mode === "sea" && "⚓ SEA"}
-                {mode === "land" && "▰ LAND"}
+                {mode === "air" && "✈ " + (locale === "en" ? "AIR" : "อากาศ")}
+                {mode === "sea" && "⚓ " + (locale === "en" ? "SEA" : "เรือ")}
+                {mode === "land" && "▰ " + (locale === "en" ? "LAND" : "บก")}
               </span>
             </button>
           ))}
@@ -154,7 +142,7 @@ export default function MotionHero() {
             <h1
               className="font-display font-black text-white leading-[0.95] tracking-tight"
               style={{
-                fontSize: "clamp(32px, 5vw, 64px)",
+                fontSize: "clamp(28px, 5vw, 64px)",
                 whiteSpace: "pre-line"
               }}
             >
