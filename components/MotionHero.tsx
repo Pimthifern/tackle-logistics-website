@@ -9,7 +9,7 @@ import Image from "next/image";
 export default function MotionHero() {
   const t = useTranslations("hero");
   const locale = useLocale();
-  const [activeMode, setActiveMode] = useState<keyof typeof t.raw>("modes")>("air");
+  const [activeMode, setActiveMode] = useState<"air" | "sea" | "land">("air");
 
   const modes = t.raw("modes") as any;
   const current = modes[activeMode];
