@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 
 export default function MotionHero() {
   const t = useTranslations("hero");
@@ -16,44 +17,48 @@ export default function MotionHero() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-[#0f172a]">
 
-      {/* LAYER 1 — Full bleed background image */}
+      {/* LAYER 1 — Full bleed background image with responsive scaling */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeMode + "-bg"}
-          initial={{ opacity: 0, scale: 1.04 }}
+          initial={{ opacity: 0, scale: 1.02 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.02 }}
+          exit={{ opacity: 0, scale: 1.01 }}
           transition={{ duration: 0.9, ease: "easeInOut" }}
           className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(/images/${activeMode}-hero.png)`,
-            backgroundSize: "cover",
-            backgroundPosition: "center right",
-            backgroundRepeat: "no-repeat"
-          }}
-        />
+        >
+          <Image
+            src={`/images/${activeMode}-hero.png`}
+            alt={current.eyebrow}
+            fill
+            className="object-cover object-right"
+            priority
+            sizes="100vw"
+            quality={90}
+          />
+        </motion.div>
       </AnimatePresence>
 
       {/* LAYER 2 — Gradient overlay for text readability */}
       <div
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-[10]"
         style={{
-          background: "linear-gradient(to top, rgba(6,47,102,0.85) 0%, rgba(6,47,102,0.35) 45%, transparent 70%)"
+          background: "linear-gradient(to top, rgba(6,47,102,0.90) 0%, rgba(6,47,102,0.50) 40%, rgba(6,47,102,0.20) 60%, transparent 80%)"
         }}
       />
 
       {/* LAYER 3 — Dot grid */}
       <div
-        className="absolute inset-0 z-[2] opacity-20 pointer-events-none"
+        className="absolute inset-0 z-[11] opacity-15 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px)",
           backgroundSize: "28px 28px"
         }}
       />
 
       {/* LAYER 4 — Route SVG */}
       <svg
-        className="absolute inset-0 w-full h-full z-[3] pointer-events-none"
+        className="absolute inset-0 w-full h-full z-[12] pointer-events-none"
         viewBox="0 0 1700 900"
         preserveAspectRatio="none"
       >
@@ -61,7 +66,7 @@ export default function MotionHero() {
           key={activeMode}
           d={current.route}
           stroke="white"
-          strokeOpacity="0.5"
+          strokeOpacity="0.6"
           strokeWidth="3"
           strokeLinecap="round"
           strokeDasharray="8 6"
@@ -73,7 +78,7 @@ export default function MotionHero() {
       </svg>
 
       {/* LAYER 5 — Topbar */}
-      <div className="absolute top-0 left-0 right-0 z-[10] px-4 sm:px-8 md:px-12 py-5 sm:py-6 md:py-7 flex justify-between items-center">
+      <div className="absolute top-0 left-0 right-0 z-[20] px-4 sm:px-8 md:px-12 py-5 sm:py-6 md:py-7 flex justify-between items-center">
         <div className="font-display font-black text-2xl sm:text-3xl tracking-widest text-white">
           {t("brand")}
         </div>
@@ -81,13 +86,13 @@ export default function MotionHero() {
           <Link
             href="/"
             locale={locale === "en" ? "th" : "en"}
-            className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full border border-white/40 text-white font-black text-xs sm:text-sm tracking-wider backdrop-blur-[20px] bg-white/10 hover:bg-white/20 transition-all hover:-translate-y-0.5"
+            className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full border border-white/40 text-white font-black text-xs sm:text-sm tracking-wider backdrop-blur-[20px] bg-white/10 hover:bg-white/20 transition-all hover:-translate-y-0.5 whitespace-nowrap"
           >
             {locale === "en" ? "🇹🇭 ไทย" : "🇺🇸 EN"}
           </Link>
           <Link
             href="#quote"
-            className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/40 text-white font-black text-xs sm:text-sm tracking-wider backdrop-blur-[20px] bg-white/10 hover:bg-white/20 transition-all hover:-translate-y-0.5"
+            className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/40 text-white font-black text-xs sm:text-sm tracking-wider backdrop-blur-[20px] bg-white/10 hover:bg-white/20 transition-all hover:-translate-y-0.5 whitespace-nowrap"
           >
             {t("requestQuote")}
           </Link>
@@ -95,7 +100,7 @@ export default function MotionHero() {
       </div>
 
       {/* LAYER 6 — Mode Tabs */}
-      <div className="absolute top-[70px] sm:top-[80px] md:top-[88px] left-4 sm:left-8 md:left-12 z-[10]">
+      <div className="absolute top-[70px] sm:top-[80px] md:top-[88px] left-4 sm:left-8 md:left-12 z-[20]">
         <div className="inline-flex p-1.5 rounded-full border border-white/30 backdrop-blur-[22px] bg-white/10 gap-1">
           {(["air", "sea", "land"] as const).map((mode) => (
             <button
@@ -121,7 +126,7 @@ export default function MotionHero() {
       </div>
 
       {/* LAYER 7 — Copy block (bottom left) */}
-      <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-[10] max-w-full sm:max-w-[640px]">
+      <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-[20] max-w-full sm:max-w-[640px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeMode}
@@ -150,7 +155,7 @@ export default function MotionHero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-white/80 text-base sm:text-lg font-medium leading-relaxed max-w-full sm:max-w-[520px]">
+            <p className="text-white/90 text-base sm:text-lg font-medium leading-relaxed max-w-full sm:max-w-[520px]">
               {current.subtitle}
             </p>
 
@@ -159,7 +164,7 @@ export default function MotionHero() {
               <div className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 rounded-full border border-white/40 backdrop-blur-[16px] bg-white/10 flex items-center justify-center">
                 <span className="text-white text-sm sm:text-base">{current.icon}</span>
               </div>
-              <p className="text-white/70 font-display font-black tracking-widest uppercase text-[10px] sm:text-xs">
+              <p className="text-white/80 font-display font-black tracking-widest uppercase text-[10px] sm:text-xs">
                 {current.cue}
               </p>
             </div>
