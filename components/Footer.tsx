@@ -1,4 +1,10 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 export default function Footer() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="bg-navy py-12 sm:py-16 px-4 sm:px-8 md:px-12 text-white">
       <div className="max-w-7xl mx-auto">
@@ -9,10 +15,10 @@ export default function Footer() {
               TACKLE
             </h2>
             <p className="text-white/70 text-base sm:text-lg mb-4 sm:mb-6">
-              Premium Logistics Partner
+              {t("tagline")}
             </p>
             <p className="text-white/50 text-xs sm:text-sm">
-              © 2025 TACKLE Logistics Co., Ltd.
+              {t("copyright")}
             </p>
           </div>
 
@@ -23,21 +29,20 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <span className="text-2xl">📞</span>
-              <a href="tel:0808264865" className="text-lg hover:text-sky transition-colors">
-                080-826-4865
+              <a href={`tel:${t("contact.phone")}`} className="text-lg hover:text-sky transition-colors">
+                {t("contact.phone")}
               </a>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-2xl">✉</span>
-              <a href="mailto:Chartsiam@tacklelog.com" className="text-lg hover:text-sky transition-colors">
-                Chartsiam@tacklelog.com
+              <a href={`mailto:${t("contact.email")}`} className="text-lg hover:text-sky transition-colors">
+                {t("contact.email")}
               </a>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-2xl">📍</span>
               <p className="text-lg leading-relaxed">
-                883/318 Moo2, Banklangsuan,<br />
-                Prasamutchedi, Samutprakarn 10290
+                {t("contact.address")}
               </p>
             </div>
           </div>

@@ -1,32 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const hubs = [
-  "Suvarnabhumi Airport",
-  "Bangkok Sea Port",
-  "Bangpoo Industrial Estate"
-];
-
-const countries = [
-  "Malaysia",
-  "Singapore",
-  "Vietnam",
-  "Laos",
-  "Cambodia"
-];
+import { useTranslations } from "next-intl";
 
 export default function CoverageSection() {
+  const t = useTranslations("coverage");
+
   return (
     <section className="bg-navy py-16 sm:py-20 px-4 sm:px-8 md:px-12 text-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12 sm:mb-16">
           <p className="font-display font-black tracking-widest uppercase text-xs text-white/50 mb-4">
-            COVERAGE
+            {t("label")}
           </p>
           <h2 className="font-display font-black tracking-tight" style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
-            Hubs & Cross-Border Routes.
+            {t("title")}
           </h2>
         </div>
 
@@ -39,9 +28,9 @@ export default function CoverageSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h3 className="font-display font-bold text-xl mb-6">Hub Locations</h3>
+            <h3 className="font-display font-bold text-xl mb-6">{t("hubs.title")}</h3>
             <div className="space-y-4">
-              {hubs.map((hub, index) => (
+              {t.raw("hubs.items").map((hub: string, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
@@ -64,9 +53,9 @@ export default function CoverageSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h3 className="font-display font-bold text-xl mb-6">Cross-Border Routes</h3>
+            <h3 className="font-display font-bold text-xl mb-6">{t("countries.title")}</h3>
             <div className="space-y-4">
-              {countries.map((country, index) => (
+              {t.raw("countries.items").map((country: string, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}

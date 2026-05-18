@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface FormData {
   companyName: string;
@@ -16,16 +17,8 @@ interface FormData {
   specialRequirement: string;
 }
 
-const serviceOptions = [
-  "Air Freight",
-  "Sea Freight",
-  "Cross Border",
-  "Customs Broker",
-  "Land Transport",
-  "Packing & Repacking"
-];
-
 export default function QuoteForm() {
+  const t = useTranslations("quoteForm");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
@@ -62,10 +55,10 @@ export default function QuoteForm() {
               </svg>
             </motion.div>
             <h2 className="font-display font-black text-3xl mb-4">
-              Thank you!
+              {t("success.title")}
             </h2>
             <p className="text-muted text-lg">
-              We'll be in touch within one business day.
+              {t("success.message")}
             </p>
           </motion.div>
         </div>
@@ -74,18 +67,18 @@ export default function QuoteForm() {
   }
 
   return (
-    <section className="bg-page-bg py-16 sm:py-20 px-4 sm:px-8 md:px-12">
+    <section id="quote" className="bg-page-bg py-16 sm:py-20 px-4 sm:px-8 md:px-12">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-8 sm:mb-12">
           <p className="text-corp-blue font-display font-black tracking-widest uppercase text-xs mb-4">
-            GET A QUOTE
+            {t("label")}
           </p>
           <h2 className="font-display font-black tracking-tight mb-4" style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
-            Request a freight quote.
+            {t("title")}
           </h2>
           <p className="text-muted text-base sm:text-lg">
-            We'll get back to you within one business day.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -103,13 +96,13 @@ export default function QuoteForm() {
             {/* Company Name */}
             <div>
               <label className="block font-display font-bold text-sm mb-2">
-                Company Name <span className="text-red-500">*</span>
+                {t("fields.companyName.label")} <span className="text-red-500">*</span>
               </label>
               <input
-                {...register("companyName", { required: "This field is required." })}
+                {...register("companyName", { required: t("fields.companyName.required") })}
                 type="text"
                 className="w-full px-4 py-3 rounded-2xl border-2 border-sky focus:border-navy focus:ring-2 focus:ring-navy/20 outline-none transition-all font-body"
-                placeholder="Your company name"
+                placeholder={t("fields.companyName.placeholder")}
               />
               {errors.companyName && (
                 <p className="text-red-500 text-sm mt-1">{errors.companyName.message}</p>
@@ -119,13 +112,13 @@ export default function QuoteForm() {
             {/* Contact Person */}
             <div>
               <label className="block font-display font-bold text-sm mb-2">
-                Contact Person <span className="text-red-500">*</span>
+                {t("fields.contactPerson.label")} <span className="text-red-500">*</span>
               </label>
               <input
-                {...register("contactPerson", { required: "This field is required." })}
+                {...register("contactPerson", { required: t("fields.contactPerson.required") })}
                 type="text"
                 className="w-full px-4 py-3 rounded-2xl border-2 border-sky focus:border-navy focus:ring-2 focus:ring-navy/20 outline-none transition-all font-body"
-                placeholder="Your name"
+                placeholder={t("fields.contactPerson.placeholder")}
               />
               {errors.contactPerson && (
                 <p className="text-red-500 text-sm mt-1">{errors.contactPerson.message}</p>
@@ -135,13 +128,13 @@ export default function QuoteForm() {
             {/* Phone */}
             <div>
               <label className="block font-display font-bold text-sm mb-2">
-                Phone Number <span className="text-red-500">*</span>
+                {t("fields.phone.label")} <span className="text-red-500">*</span>
               </label>
               <input
-                {...register("phone", { required: "This field is required." })}
+                {...register("phone", { required: t("fields.phone.required") })}
                 type="tel"
                 className="w-full px-4 py-3 rounded-2xl border-2 border-sky focus:border-navy focus:ring-2 focus:ring-navy/20 outline-none transition-all font-body"
-                placeholder="080-826-4865"
+                placeholder={t("fields.phone.placeholder")}
               />
               {errors.phone && (
                 <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
@@ -151,19 +144,19 @@ export default function QuoteForm() {
             {/* Email */}
             <div>
               <label className="block font-display font-bold text-sm mb-2">
-                Email <span className="text-red-500">*</span>
+                {t("fields.email.label")} <span className="text-red-500">*</span>
               </label>
               <input
                 {...register("email", {
-                  required: "This field is required.",
+                  required: t("fields.email.required"),
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address."
+                    message: t("fields.email.invalid")
                   }
                 })}
                 type="email"
                 className="w-full px-4 py-3 rounded-2xl border-2 border-sky focus:border-navy focus:ring-2 focus:ring-navy/20 outline-none transition-all font-body"
-                placeholder="your@email.com"
+                placeholder={t("fields.email.placeholder")}
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
@@ -173,13 +166,13 @@ export default function QuoteForm() {
             {/* Origin */}
             <div>
               <label className="block font-display font-bold text-sm mb-2">
-                Origin <span className="text-red-500">*</span>
+                {t("fields.origin.label")} <span className="text-red-500">*</span>
               </label>
               <input
-                {...register("origin", { required: "This field is required." })}
+                {...register("origin", { required: t("fields.origin.required") })}
                 type="text"
                 className="w-full px-4 py-3 rounded-2xl border-2 border-sky focus:border-navy focus:ring-2 focus:ring-navy/20 outline-none transition-all font-body"
-                placeholder="Bangkok, Thailand"
+                placeholder={t("fields.origin.placeholder")}
               />
               {errors.origin && (
                 <p className="text-red-500 text-sm mt-1">{errors.origin.message}</p>
@@ -189,13 +182,13 @@ export default function QuoteForm() {
             {/* Destination */}
             <div>
               <label className="block font-display font-bold text-sm mb-2">
-                Destination <span className="text-red-500">*</span>
+                {t("fields.destination.label")} <span className="text-red-500">*</span>
               </label>
               <input
-                {...register("destination", { required: "This field is required." })}
+                {...register("destination", { required: t("fields.destination.required") })}
                 type="text"
                 className="w-full px-4 py-3 rounded-2xl border-2 border-sky focus:border-navy focus:ring-2 focus:ring-navy/20 outline-none transition-all font-body"
-                placeholder="Singapore"
+                placeholder={t("fields.destination.placeholder")}
               />
               {errors.destination && (
                 <p className="text-red-500 text-sm mt-1">{errors.destination.message}</p>
@@ -206,15 +199,15 @@ export default function QuoteForm() {
           {/* Service Type (Full Width) */}
           <div className="mb-6">
             <label className="block font-display font-bold text-sm mb-2">
-              Service Type <span className="text-red-500">*</span>
+              {t("fields.serviceType.label")} <span className="text-red-500">*</span>
             </label>
             <select
-              {...register("serviceType", { required: "This field is required." })}
+              {...register("serviceType", { required: t("fields.serviceType.required") })}
               className="w-full px-4 py-3 rounded-2xl border-2 border-sky focus:border-navy focus:ring-2 focus:ring-navy/20 outline-none transition-all font-body bg-white"
             >
-              <option value="">Select a service</option>
-              {serviceOptions.map((option) => (
-                <option key={option} value={option}>
+              <option value="">{t("fields.serviceType.placeholder")}</option>
+              {t.raw("fields.serviceType.options").map((option: string, index: number) => (
+                <option key={index} value={option}>
                   {option}
                 </option>
               ))}
@@ -227,13 +220,13 @@ export default function QuoteForm() {
           {/* Cargo Detail (Full Width) */}
           <div className="mb-6">
             <label className="block font-display font-bold text-sm mb-2">
-              Cargo Type / Detail <span className="text-red-500">*</span>
+              {t("fields.cargoDetail.label")} <span className="text-red-500">*</span>
             </label>
             <textarea
-              {...register("cargoDetail", { required: "This field is required." })}
+              {...register("cargoDetail", { required: t("fields.cargoDetail.required") })}
               rows={4}
               className="w-full px-4 py-3 rounded-2xl border-2 border-sky focus:border-navy focus:ring-2 focus:ring-navy/20 outline-none transition-all font-body resize-none"
-              placeholder="Describe your cargo (weight, dimensions, special handling requirements...)"
+              placeholder={t("fields.cargoDetail.placeholder")}
             />
             {errors.cargoDetail && (
               <p className="text-red-500 text-sm mt-1">{errors.cargoDetail.message}</p>
@@ -243,13 +236,13 @@ export default function QuoteForm() {
           {/* Special Requirement (Optional, Full Width) */}
           <div className="mb-8">
             <label className="block font-display font-bold text-sm mb-2">
-              Special Requirement
+              {t("fields.specialRequirement.label")}
             </label>
             <textarea
               {...register("specialRequirement")}
               rows={3}
               className="w-full px-4 py-3 rounded-2xl border-2 border-sky focus:border-navy focus:ring-2 focus:ring-navy/20 outline-none transition-all font-body resize-none"
-              placeholder="Any special requirements or notes (optional)"
+              placeholder={t("fields.specialRequirement.placeholder")}
             />
           </div>
 
@@ -259,7 +252,7 @@ export default function QuoteForm() {
             whileTap={{ scale: 0.98 }}
             className="w-full bg-navy text-white rounded-full font-display font-black text-base py-4 hover:bg-corp-blue transition-colors"
           >
-            Submit Quote Request
+            {t("submit")}
           </motion.button>
         </motion.form>
       </div>

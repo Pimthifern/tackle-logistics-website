@@ -1,69 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const services = [
-  {
-    icon: "✈",
-    title: "Air Freight",
-    desc: "Urgent, sensitive, DGR, medical and temperature-controlled cargo."
-  },
-  {
-    icon: "🚢",
-    title: "Sea Freight",
-    desc: "FCL/LCL ocean freight for import, export, machinery and bulk cargo."
-  },
-  {
-    icon: "🗺",
-    title: "Cross Border",
-    desc: "Door-to-door routes across Malaysia, Singapore, Vietnam, Laos and Cambodia."
-  },
-  {
-    icon: "📋",
-    title: "Customs Broker",
-    desc: "Clearance and document support for import and export operations."
-  },
-  {
-    icon: "🚛",
-    title: "Land Transport",
-    desc: "Domestic transportation 24/7 with strategic hubs and multiple truck types."
-  },
-  {
-    icon: "📦",
-    title: "Packing & Repacking",
-    desc: "UN Box, IPPC wooden crate, lashing, chocking and dry ice support."
-  }
-];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 32 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as any } }
-};
+import { useTranslations } from "next-intl";
 
 export default function ServicesSection() {
+  const t = useTranslations("services");
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 32 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as any } }
+  };
+
   return (
     <section className="bg-white py-16 sm:py-20 px-4 sm:px-8 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8 sm:mb-12">
           <p className="text-corp-blue font-display font-black tracking-widest uppercase text-xs mb-4">
-            OUR SERVICES
+            {t("label")}
           </p>
           <h2 className="font-display font-black tracking-tight mb-4" style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
-            Everything your cargo needs.
+            {t("title")}
           </h2>
           <p className="text-muted text-base sm:text-lg">
-            Six core services. One reliable partner.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -75,18 +45,18 @@ export default function ServicesSection() {
           viewport={{ once: true, margin: "-80px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
-          {services.map((service, index) => (
+          {t.raw("items").map((service: any, index: number) => (
             <motion.div
               key={index}
               variants={item}
               className="bg-white border border-sky rounded-2xl sm:rounded-[32px] p-5 sm:p-6 md:p-[30px] shadow-[0_16px_45px_rgba(15,45,80,0.06)]"
             >
-              <div className="text-3xl mb-4">{service.icon}</div>
+              <div className="text-3xl mb-4">{["✈", "🚢", "🗺", "📋", "🚛", "📦"][index]}</div>
               <h3 className="font-display font-bold text-2xl tracking-tight mb-3">
                 {service.title}
               </h3>
               <p className="text-muted leading-relaxed">
-                {service.desc}
+                {service.description}
               </p>
             </motion.div>
           ))}

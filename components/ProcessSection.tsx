@@ -1,27 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const steps = [
-  { num: 1, title: "Inquiry", desc: "Tell us your cargo details and requirements." },
-  { num: 2, title: "Cargo Review", desc: "We assess your shipment and recommend the best solution." },
-  { num: 3, title: "Quotation", desc: "Receive a clear, transparent quote with no hidden fees." },
-  { num: 4, title: "Booking", desc: "Confirm and we handle all arrangements end-to-end." },
-  { num: 5, title: "Transport", desc: "Your cargo moves — tracked and cared for throughout." },
-  { num: 6, title: "Delivery Confirmation", desc: "Final delivery with documentation and confirmation." }
-];
+import { useTranslations } from "next-intl";
 
 export default function ProcessSection() {
+  const t = useTranslations("process");
+
   return (
     <section className="bg-white py-16 sm:py-20 px-4 sm:px-8 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12 sm:mb-16">
           <p className="text-corp-blue font-display font-black tracking-widest uppercase text-xs mb-4">
-            HOW IT WORKS
+            {t("label")}
           </p>
           <h2 className="font-display font-black tracking-tight" style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
-            Simple process. Reliable results.
+            {t("title")}
           </h2>
         </div>
 
@@ -52,9 +46,9 @@ export default function ProcessSection() {
 
             {/* Steps Grid */}
             <div className="grid grid-cols-6 gap-4 relative z-10">
-              {steps.map((step, index) => (
+              {t.raw("steps").map((step: any, index: number) => (
                 <motion.div
-                  key={step.num}
+                  key={index}
                   initial={{ opacity: 0, y: 32 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
@@ -63,14 +57,14 @@ export default function ProcessSection() {
                 >
                   <div className="w-24 h-24 rounded-full bg-navy flex items-center justify-center mb-4">
                     <span className="font-display font-black text-white text-2xl">
-                      {step.num}
+                      {index + 1}
                     </span>
                   </div>
                   <h3 className="font-display font-bold text-lg mb-2">
                     {step.title}
                   </h3>
                   <p className="text-muted text-sm leading-relaxed">
-                    {step.desc}
+                    {step.description}
                   </p>
                 </motion.div>
               ))}
@@ -79,9 +73,9 @@ export default function ProcessSection() {
 
           {/* Mobile: Vertical layout */}
           <div className="md:hidden space-y-8">
-            {steps.map((step, index) => (
+            {t.raw("steps").map((step: any, index: number) => (
               <motion.div
-                key={step.num}
+                key={index}
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
@@ -90,7 +84,7 @@ export default function ProcessSection() {
               >
                 <div className="w-16 h-16 rounded-full bg-navy flex items-center justify-center flex-shrink-0">
                   <span className="font-display font-black text-white text-xl">
-                    {step.num}
+                    {index + 1}
                   </span>
                 </div>
                 <div>
@@ -98,7 +92,7 @@ export default function ProcessSection() {
                     {step.title}
                   </h3>
                   <p className="text-muted text-sm leading-relaxed">
-                    {step.desc}
+                    {step.description}
                   </p>
                 </div>
               </motion.div>
