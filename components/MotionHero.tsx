@@ -126,7 +126,7 @@ export default function MotionHero() {
       </div>
 
       {/* LAYER 7 — Copy block (bottom left) */}
-      <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-[20] max-w-full sm:max-w-[640px]">
+      <div className="absolute bottom-12 sm:bottom-16 md:bottom-20 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-[20] max-w-full sm:max-w-[580px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeMode}
@@ -134,20 +134,20 @@ export default function MotionHero() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-4 sm:space-y-5"
+            className="space-y-3 sm:space-y-4"
           >
             {/* Eyebrow */}
-            <div className="inline-flex px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/40 backdrop-blur-[16px] bg-white/10">
-              <span className="font-display font-black tracking-widest text-[10px] sm:text-xs uppercase text-white">
+            <div className="inline-flex px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/40 backdrop-blur-[16px] bg-white/10">
+              <span className="font-display font-black tracking-widest text-[9px] sm:text-[10px] uppercase text-white">
                 {current.eyebrow}
               </span>
             </div>
 
             {/* H1 */}
             <h1
-              className="font-display font-black text-white leading-[0.95] tracking-tight"
+              className="font-display font-black text-white leading-[1.05] tracking-tight"
               style={{
-                fontSize: "clamp(28px, 5vw, 64px)",
+                fontSize: "clamp(22px, 3.5vw, 42px)",
                 whiteSpace: "pre-line"
               }}
             >
@@ -155,16 +155,16 @@ export default function MotionHero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-white/90 text-base sm:text-lg font-medium leading-relaxed max-w-full sm:max-w-[520px]">
+            <p className="text-white/90 text-sm sm:text-base font-medium leading-relaxed max-w-full sm:max-w-[480px]">
               {current.subtitle}
             </p>
 
             {/* Cue */}
-            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 rounded-full border border-white/40 backdrop-blur-[16px] bg-white/10 flex items-center justify-center">
-                <span className="text-white text-sm sm:text-base">{current.icon}</span>
+            <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 flex-shrink-0 rounded-full border border-white/40 backdrop-blur-[16px] bg-white/10 flex items-center justify-center">
+                <span className="text-white text-xs sm:text-sm">{current.icon}</span>
               </div>
-              <p className="text-white/80 font-display font-black tracking-widest uppercase text-[10px] sm:text-xs">
+              <p className="text-white/75 font-display font-black tracking-widest uppercase text-[9px] sm:text-[10px]">
                 {current.cue}
               </p>
             </div>
